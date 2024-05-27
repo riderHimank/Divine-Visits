@@ -9,7 +9,7 @@ const bodyParser  = require('express').json;
 app.use(bodyParser());
 
 app.use('/user', userRoutes);
-app.use('/bookings', ticketRoutes);
+app.use('/buy_ticket', ticketRoutes);
 
 connectDB()
 .then(() => {
