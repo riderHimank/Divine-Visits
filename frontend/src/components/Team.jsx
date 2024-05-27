@@ -3,9 +3,9 @@ import TeamMember from "./TeamMember";
 function Team(){
     //team members array with por and images
     const team = [
-        {url:"../../public/images/himank.jpg",message:"Himank Bohara",por:"Coordinator"},
-        {url:"../../public/images/Gagandeep.jpg",message:"Gagandeep Singh",por:"Treasurer"},
-        {url:"../../public/images/Dipesh.jpg",message:"Dipesh Kumar",por:"Manager"}
+        {url:"/images/himank.jpg",message:"Himank Bohara",por:"Coordinator"},
+        {url:"/images/Gagandeep.jpg",message:"Gagandeep Singh",por:"Treasurer"},
+        {url:"/images/Dipesh.jpg",message:"Dipesh Kumar",por:"Manager"}
     ];
     return (
         <>

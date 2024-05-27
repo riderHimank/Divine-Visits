@@ -11,7 +11,7 @@ function AboutTemple(){
             </div>
             <div className="w-full md:w-[40%] md:ml-2 pl-[4%] pr-[5%] md:p-0">
                 {/* temple image */}
-                <img className="w-full h-auto border-[#555454] border-4 rounded-[10px]" src="../../public/images/temple image.jpg" alt="" />
+                <img className="w-full h-auto border-[#555454] border-4 rounded-[10px]" src="/images/temple image.jpg" alt="" />
             </div>
         </div>
         </>

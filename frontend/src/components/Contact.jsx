@@ -57,7 +57,7 @@ function Contact(){
                 </form>
 
                 <div className='flex items-center justify-center'>
-                    <img className='w-auto h-auto' src="../../public/images/right_img.png" alt="" />
+                    <img className='w-auto h-auto' src="/images/right_img.png" alt="" />
                 </div>
 
             </div>

@@ -5,7 +5,7 @@ const Banner = () => {
     <div id="Banner" className="relative">
 
       {/* background image */}
-      <img src="../../public/images/temple image.jpg" // Replace with your image path
+      <img src="/images/temple image.jpg" // Replace with your image path
         alt="Descriptive Alt Text"/>
 
       {/* center text of backgrond image */}

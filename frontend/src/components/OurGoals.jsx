@@ -4,9 +4,9 @@ function OurGoals(){
 
     //goals array with images
     const goal = [
-        {url:"../../public/images/poorkids.png",message:"Feed Poor Kids"},
-        {url:"../../public/images/yoga.png",message:"Healthy life"},
-        {url:"../../public/images/happy kids.jpg",message:"Education of Kids"}
+        {url:"/images/poorkids.png",message:"Feed Poor Kids"},
+        {url:"/images/yoga.png",message:"Healthy life"},
+        {url:"/images/happy kids.jpg",message:"Education of Kids"}
     ];
     return (
         <div id="Goals" className="bg-[#242424] pb-8">

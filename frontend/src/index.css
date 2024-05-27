@@ -7,3 +7,67 @@
 @import url('https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Outfit:wght@100..900&display=swap');
+
+.gradient {
+  background: hsla(266, 63%, 26%, 1);
+
+  background: linear-gradient(
+    135deg,
+    hsla(266, 63%, 26%, 1) 0%,
+    hsla(354, 55%, 63%, 1) 50%,
+    hsla(31, 100%, 74%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    135deg,
+    hsla(266, 63%, 26%, 1) 0%,
+    hsla(354, 55%, 63%, 1) 50%,
+    hsla(31, 100%, 74%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    135deg,
+    hsla(266, 63%, 26%, 1) 0%,
+    hsla(354, 55%, 63%, 1) 50%,
+    hsla(31, 100%, 74%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#3E196E", endColorstr="#D46C76", GradientType=1 );
+}
+
+@font-face {
+  font-family: light;
+  src: url(/font/light.otf);
+}
+@font-face {
+  font-family: regular;
+  src: url(/font/regular.otf);
+}
+@font-face {
+  font-family: semibold;
+  src: url(/font/semibold.otf);
+}
+.font-light {
+  font-family: light;
+}
+.font-regular {
+  font-family: regular;
+}
+.font-semibold {
+  font-family: semibold;
+}
+.button,.solid-shadow{
+    transform-style: preserve-3d ;
+}
+
+.button:before{
+    content: 'Sign Up';
+    position: absolute;
+    top: 5px;
+    left: -5px;
+    width: 100%;
+    height: 100%;
+    background: black;
+    transform: translateZ(-1px) ;
+    @apply rounded-2xl
+}
