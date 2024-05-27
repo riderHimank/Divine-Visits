@@ -11,10 +11,11 @@ const user_create_post = (req, res) =>
     email = email.trim();
     password = password.trim();
     address = address.trim();
-    // pincode = pincode.trim();
     dateOfBirth = dateOfBirth.trim();
 
-    if(firstname == ""||email =="" ||password ==""||dateOfBirth ==""||address==""||pincode=="")
+    // pincode checking required
+    
+    if(firstname == ""||email =="" ||password ==""||dateOfBirth ==""||address=="")
     {
         res.json({
             status: "Failed",
