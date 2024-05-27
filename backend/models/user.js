@@ -12,6 +12,6 @@ const UserSchema = new Schema({
     dateOfBirth: Date
 });  
 
-const Uuser =  mongoose.model('Uuser',UserSchema);
+const users =  mongoose.model('users',UserSchema);
 
-module.exports = Uuser;
+module.exports = users;

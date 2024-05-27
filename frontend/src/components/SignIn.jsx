@@ -1,11 +1,34 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,redirect,useNavigate } from "react-router-dom";
 
 const SignIn = () => {
     const [form, setForm] = useState({
-        username: '',
+        email: '',
         password: '',
     });
+
+    const redirect = useNavigate();
+
+    const handleSubmit = async () => {
+        const response = await fetch('http://localhost:3000/user/signin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form),
+        });
+
+        const data = await response.json();
+
+        console.log(data);
+        if (data.status === 'SUCCESS!') {
+            alert(data.message);
+            redirect('/');
+        } else {
+            alert('User Login Failed'); 
+            redirect('/signin');
+        }
+    }
 
     return (
         <form className="relative bg-white shadow-md border-2 border-black px-10 pt-6 pb-8 mb-4 ">
@@ -19,7 +42,7 @@ const SignIn = () => {
                     id="username"
                     type="text"
                     placeholder="Enter your email"
-                    onChange={(e) => setForm({ ...form, username: e.target.value })}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
                 />
             </div>
             <div className="mb-10">
@@ -38,7 +61,7 @@ const SignIn = () => {
                 <button
                     className="button relative bg-white hover:bg-orange-500 hover:text-white text-black font-bold w-full py-2 px-4 rounded-2xl border-black border-2 focus:outline-none focus:shadow-outline"
                     type="button"
-                    onClick={() => console.log(form)}
+                    onClick={handleSubmit}
                 >
                     LOG IN
                 </button>

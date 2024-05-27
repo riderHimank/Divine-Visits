@@ -15,7 +15,7 @@ const user_create_post = (req, res) =>
 
     // pincode checking required
     
-    if(firstname == ""||email =="" ||password ==""||dateOfBirth ==""||address=="")
+    if(firstname == "" || lastname == "" ||email =="" ||password ==""||dateOfBirth =="")
     {
         res.json({
             status: "Failed",
@@ -137,7 +137,7 @@ const user_signin = (req, res) =>
                     if(result){ // password match
 
                         res.json({
-                            status: "SUCCESS",
+                            status: "SUCCESS!",
                             message: " Signin Successful",
                             data: data
                         });

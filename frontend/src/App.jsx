@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 // components
 import Banner from './components/Banner';
@@ -34,6 +34,7 @@ function App() {
           <div className="flex justify-center items-center min-h-screen gradient font-regular">
             <SignUp />
           </div>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   )

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
     const [form, setForm] = useState({
@@ -10,6 +10,29 @@ const SignUp = () => {
         address: '40 Mahaveer Nagar, Udaipur, Rajasthan, India',
         dateOfBirth: '',
     });
+
+    const redirect = useNavigate();
+
+    const handleSubmit = async () => { 
+        const response = await fetch('http://localhost:3000/user/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form),
+        });
+
+        const data = await response.json();
+
+        console.log(data);
+        if (data.status === 'SUCCESS!') {
+            alert('User Registered Successfully');
+            redirect('/signin');
+        } else {
+            alert(`User Registration Failed due to ${data.message}`);
+            redirect('/signup');
+        }
+    }
 
     return (
         <form className="relative bg-white shadow-md border-2 border-black px-10 pt-6 pb-8 m-8 ">
@@ -82,7 +105,7 @@ const SignUp = () => {
                 <button
                     className="button relative bg-white hover:bg-orange-500 hover:text-white text-black font-bold w-full py-2 px-4 rounded-2xl border-black border-2 focus:outline-none focus:shadow-outline"
                     type="button"
-                    onClick={() => console.log(form)}
+                    onClick={handleSubmit}
                 >
                     SIGN UP
                 </button>
