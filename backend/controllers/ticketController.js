@@ -7,7 +7,7 @@ const router = express.Router();
 // Not checking for valid name, phone number, dob and other details
 
 const create_ticket = async (req, res) => {
-
+ 
         const { numberOfMembers, members } = req.body;
 
         if (!numberOfMembers || !members || members.length != numberOfMembers) {

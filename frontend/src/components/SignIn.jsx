@@ -1,11 +1,15 @@
 import { useState } from "react";
-import { Link ,redirect,useNavigate } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {logIn} from "../store/slices/userSlice"
 
 const SignIn = () => {
     const [form, setForm] = useState({
         email: '',
         password: '',
     });
+
+    const dispatch = useDispatch();
 
     const redirect = useNavigate();
 
@@ -23,6 +27,7 @@ const SignIn = () => {
         console.log(data);
         if (data.status === 'SUCCESS!') {
             alert(data.message);
+            dispatch(logIn(data))
             redirect('/');
         } else {
             alert('User Login Failed'); 

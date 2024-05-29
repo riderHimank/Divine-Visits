@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import SignupButton from './SignupButton';
 import { TiThMenu } from "react-icons/ti";
 import { IoCloseSharp } from "react-icons/io5";
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 
 const Navbar = () => {
+
+  const data = useSelector(state => state.user)
+  console.log(data);
 
   //to check if screen size is less than 768px so that navbar shrinks to dropdown menu under an menu icon
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
@@ -72,11 +77,14 @@ const Navbar = () => {
           }
 
           {/* signup button */}
-          <Link to="/signup" >
+          {!data.isLoggedIn && <Link to="/signup" >
             <SignupButton>
               Sign up
             </SignupButton>
-          </Link>
+          </Link>}
+          {data.isLoggedIn && 
+            <FaUser color='white'/>
+          }
         </ul>
         }
       </div>
