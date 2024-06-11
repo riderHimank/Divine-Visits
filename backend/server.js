@@ -15,6 +15,9 @@ app.use(
     credentials: true,
   })
 );
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.use("/user", userRoutes);
 app.use("/buy_ticket", ticketRoutes);
