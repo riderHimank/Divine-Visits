@@ -11,7 +11,7 @@ app.use(bodyParser());
 const cors = require("cors");
 app.use(
   cors({
-    origin: "https://temple-ticket-booking.vercel.app/",
+    origin: "https://temple-ticket-booking-client.vercel.app",
     credentials: true,
   })
 );
