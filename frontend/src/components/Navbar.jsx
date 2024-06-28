@@ -3,14 +3,16 @@ import SignupButton from './SignupButton';
 import { TiThMenu } from "react-icons/ti";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaUser } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import HoverProfile from './hoverProfile';
 
 
 const Navbar = () => {
 
   const data = useSelector(state => state.user)
-  console.log(data);
+  const loc = useLocation();
+  // console.log(data);
 
   //to check if screen size is less than 768px so that navbar shrinks to dropdown menu under an menu icon
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
@@ -41,24 +43,30 @@ const Navbar = () => {
   };
 
 
+  let opt = [{ name: "Goals", click: "Goals", link: "#Goals" },
+  { name: "About Us", click: "About", link: "#About" },
+  { name: "Contact", click: "Contact", link: "#Contact" },];
   //navbar links array
-  let Links = [
-    { name: "Donate", click: "/", link: "/" },
-    { name: "Goals", click: "Goals", link: "#Goals" },
-    { name: "About Us", click: "About", link: "#About" },
-    { name: "Contact", click: "Contact", link: "#Contact" },
-  ];
+  let Links = loc.pathname === '/' ? [
+    { name: "Donate", link: "/donate" },
+    ...opt
+  ] : [
+    { name: "Donate", link: "/donate" },
+  ]
 
   //to check if menu is open or closed
   let [open, setOpen] = useState(false);
+  let [popen, setPopen] = useState(false);
   return (
     <div className='shadow-md w-full sticky top-0 z-10'>
       <div className='flex items-center justify-between bg-[#242424] py-2 md:py-3.5 md:pl-[3.5%] md:pr-[2%] px-4'>
-        <div className='font-bold mdd:text-3xl text-xl w-8/12 md:w-auto cursor-pointer flex items-center font-[Poppins] 
+        <Link to="/">
+          <div className='font-bold mdd:text-3xl text-xl w-8/12 md:w-auto cursor-pointer flex items-center font-[Poppins] 
         text-[#fff]'>
-          <img className='h-14 w-14 md:h-16 md:w-16 mr-2' src="/images/logo.png" alt="" />
-          ISCKON TEMPLE
-        </div>
+            <img className='h-14 w-14 md:h-16 md:w-16 mr-2' src="/images/logo.png" alt="" />
+            ISCKON TEMPLE
+          </div>
+        </Link>
 
         {/* if screen is greater than 768px then menu icon will be shown */}
         <div onClick={() => setOpen(!open)} className='text-[#fff] text-2xl ml-2 right-8 top-8 cursor-pointer md:hidden'>
@@ -71,7 +79,7 @@ const Navbar = () => {
             // iterating over arrray of links
             Links.map((link) => (
               <li key={link.name} className={'cursor-pointer my-2.5 text-[#fff] text-[18px] mx-4'}>
-                <a href={link.link} onClick={() => handleSmoothScroll(link.click)} className='text-nowrap hover:text-orange-500'>{link.name}</a>
+                <Link to={link.link} onClick={() => handleSmoothScroll(link.click)} className='text-nowrap hover:text-orange-500'>{link.name}</Link>
               </li>
             ))
           }
@@ -82,11 +90,12 @@ const Navbar = () => {
               Sign up
             </SignupButton>
           </Link>}
-          {data.isLoggedIn && 
-            <FaUser color='white'/>
+          {data.isLoggedIn &&
+            <FaUser color='white' style={{ cursor: 'pointer' }} onClick={() => setPopen(!popen)} />
           }
         </ul>
         }
+        {popen && <HoverProfile />}
       </div>
 
       {/* if screen is smaller than 768px then dropdown menu will be shown */}
@@ -95,14 +104,15 @@ const Navbar = () => {
           // iterating over arrray of links
           Links.map((link) => (
             <li key={link.name} className={'hover:bg-[#fff] text-[#fff] hover:text-[#242424] flex justify-end cursor-pointer text-[18px] px-8 py-2'}>
-              <a href={link.link} className=''>{link.name}</a>
+              <Link to={link.link} className=''>{link.name}</Link>
             </li>
           ))
         }
-
-        <SignupButton>
-          Sign up
-        </SignupButton>
+        <Link to={"/signup"}>
+          <SignupButton>
+            Sign up
+          </SignupButton>
+        </Link>
       </ul>
       }
     </div>
