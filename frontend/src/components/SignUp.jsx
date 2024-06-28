@@ -7,13 +7,12 @@ const SignUp = () => {
         lastname: '',
         email: '',
         password: '',
-        address: '40 Mahaveer Nagar, Udaipur, Rajasthan, India',
-        dateOfBirth: '',
+        address: '40 Mahaveer Nagar, Udaipur, Rajasthan, India'
     });
 
     const redirect = useNavigate();
 
-    const handleSubmit = async () => { 
+    const handleSubmit = async () => {
         const response = await fetch('https://temple-ticket-booking.vercel.app/user/signup', {
             method: 'POST',
             headers: {
@@ -89,7 +88,7 @@ const SignUp = () => {
                     />
                 </div>
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
                 <label className="block text-gray-700 text-base font-medium mb-2" htmlFor="password">
                     Date Of Birth *
                 </label>
@@ -100,7 +99,7 @@ const SignUp = () => {
                     placeholder="Enter your DOB"
                     onChange={(e) => setForm({ ...form, dateOfBirth: e.target.value })}
                 />
-            </div>
+            </div> */}
             <div className="flex flex-col items-center justify-between gap-4">
                 <button
                     className="button relative bg-white hover:bg-orange-500 hover:text-white text-black font-bold w-full py-2 px-4 rounded-2xl border-black border-2 focus:outline-none focus:shadow-outline"

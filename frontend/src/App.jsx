@@ -11,19 +11,20 @@ import SignUp from "./components/SignUp";
 
 // styles
 import './App.css';
+import MainLayout from "./components/MainLayout";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={
-          <>
-            <Navbar />
-            <Banner />
-            <OurGoals />
-            <About />
-            <Contact />
-          </>
+          <MainLayout />
+        } />
+        <Route path="/profile" element={
+          <MainLayout />
+        } />
+        <Route path="/donate" element={
+          <MainLayout />
         } />
         <Route path="/signin" element={
           <div className="flex justify-center items-center min-h-screen gradient font-regular">

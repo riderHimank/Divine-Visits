@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {logIn} from "../store/slices/userSlice"
+import { logIn } from "../store/slices/userSlice"
 
 const SignIn = () => {
     const [form, setForm] = useState({
@@ -27,10 +27,11 @@ const SignIn = () => {
         console.log(data);
         if (data.status === 'SUCCESS!') {
             alert(data.message);
+            localStorage.setItem("currentUser", JSON.stringify(data));
             dispatch(logIn(data))
-            redirect('/');
+            redirect('/profile');
         } else {
-            alert('User Login Failed'); 
+            alert('User Login Failed');
             redirect('/signin');
         }
     }
